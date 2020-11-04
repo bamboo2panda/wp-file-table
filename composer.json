@@ -1,0 +1,27 @@
+{
+  "name": "vendor_name/wp-file-table",
+  "description": "description",
+  "minimum-stability": "stable",
+  "license": "GPL-2.0-or-later",
+  "authors": [
+    {
+      "name": "bamboo2panda",
+      "email": "bamboo2panda@gmail.com"
+    }
+  ],
+  "require": {
+    "ext-json": "*",
+    "ext-dom": "*",
+    "ext-libxml": "*",
+    "ext-simplexml": "*"
+  },
+  "require-dev": {
+    "phpmd/phpmd": "~2.9"
+  },
+  "autoload": {
+    "psr-4": {
+      "Inc\\": "./inc",
+      "Templates\\": "./templates"
+    }
+  }
+}
