@@ -55,6 +55,6 @@ class FilePostsCallbacks extends BaseController
     {
         global $post;
         $meta = get_post_meta($post->ID, '_file_post_meta_key', true);
-        return $meta['attachment_link'];
+        return is_array($meta) && key_exists('attachment_link', $meta) ? $meta['attachment_link'] : '';
     }
 }
