@@ -22,6 +22,7 @@ final class Init
         return
             [
                 Base\FilesController::class,
+                Base\RenderController::class,
             ];
     }
 
