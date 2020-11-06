@@ -3,7 +3,7 @@
 /*
 Plugin Name: WP File Table
 Plugin URI: https://github.com/bamboo2panda/wp-file-table
-Description: Wordpress plugin for creating managable tables of files. .
+Description: Wordpress plugin for creating manageable tables of files.
 Version: 1.0
 Author: bamboo2panda
 Author URI: https://github.com/bamboo2panda/
@@ -21,7 +21,7 @@ final class Init
     {
         return
             [
-
+                Base\FilesController::class,
             ];
     }
 
