@@ -38,6 +38,7 @@ class RenderCallbacks
         foreach ($posts as $post){
             $meta = get_post_meta($post->ID, '_file_post_meta_key', true);
             $post->{'attachment_link'} = $meta['attachment_link'];
+            $post->{'terms'} = wp_get_post_terms($post->ID, 'file_category', array('fields' => 'names'));
             $file_posts[] = $post;
         }
         return $file_posts;
