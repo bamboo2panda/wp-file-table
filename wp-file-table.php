@@ -21,7 +21,7 @@ if (file_exists(__DIR__.'/vendor/autoload.php')){
  * Code runs during activation
  */
 function activate_wp_file_table_plugin(){
-	Inc\Base\Activate::activate();
+    FilePostsInc\Base\ActivateFilePosts::activate();
 }
 register_activation_hook(__FILE__, 'activate_wp_file_table_plugin');
 
@@ -29,7 +29,7 @@ register_activation_hook(__FILE__, 'activate_wp_file_table_plugin');
  * Code runs during deactivation
  */
 function deactivate_wp_file_table_plugin(){
-    Inc\Base\Deactivate::deactivate();
+    FilePostsInc\Base\Deactivate::deactivate();
 }
 register_deactivation_hook(__FILE__, 'deactivate_wp_file_table_plugin');
 
@@ -37,5 +37,5 @@ register_deactivation_hook(__FILE__, 'deactivate_wp_file_table_plugin');
  * Initialize all core classes of plugin
  */
 if (class_exists('Inc\\Init')){
-    Inc\Init::register_services();
+    FilePostsInc\Init::register_services();
 }

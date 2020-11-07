@@ -9,10 +9,10 @@ Author: bamboo2panda
 Author URI: https://github.com/bamboo2panda/
 License: GPL2
 */
-namespace Inc\Base;
+namespace FilePostsInc\Base;
 
 
-use Inc\Api\Callbacks\FilePostsCallbacks;
+use FilePostsInc\Api\Callbacks\FilePostsCallbacks;
 
 class FilesController
 {
@@ -41,6 +41,7 @@ class FilesController
                     'name'          => __('Файлы'),
                     'singular_name' => __('Файл'),
                 ),
+                'menu_position' => 2,
                 'public'      => true,
                 'has_archive' => false,
             )

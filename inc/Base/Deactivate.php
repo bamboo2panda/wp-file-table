@@ -9,7 +9,7 @@ Author: bamboo2panda
 Author URI: https://github.com/bamboo2panda/
 License: GPL2
 */
-namespace Inc\Base;
+namespace FilePostsInc\Base;
 
 
 class Deactivate

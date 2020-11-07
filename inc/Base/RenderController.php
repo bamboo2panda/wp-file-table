@@ -9,10 +9,10 @@ Author URI: https://github.com/bamboo2panda/
 License: GPL2
 */
 
-namespace Inc\Base;
+namespace FilePostsInc\Base;
 
 
-use Inc\Api\Callbacks\RenderCallbacks;
+use FilePostsInc\Api\Callbacks\RenderCallbacks;
 
 class RenderController
 {

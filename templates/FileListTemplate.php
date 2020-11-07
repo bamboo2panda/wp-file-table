@@ -1,6 +1,6 @@
 <?php
 
-namespace Templates;
+namespace FilePostsTemplates;
 
 class FileListTemplate
 {
@@ -32,13 +32,14 @@ class FileListTemplate
             $name = $file_post->post_title;
             $link = $file_post->attachment_link;
             $type = $this->getMimeType($link);
+            $type_logo = $this->makeTypeLogo($type);
             $cat = $file_post->terms[0];
             $html .= '
                 <tr>
-                    <td>'.$type.'</td>
-                    <td>'.$name.'</td>
+                    <td>'.$type_logo.'</td>
+                    <td><p>'.$name.'</p></td>
                     <td>'.$cat.'</td>
-                    <td><a class="btn btn-primary" href="'.$link.'">Скачать</a></td>
+                    <td><p align="center"><a class="btn btn-primary" href="'.$link.'">Скачать</a></td>
                 </tr>';
         }
         $html .= '
@@ -74,6 +75,20 @@ class FileListTemplate
         $wp_scripts->registered['jquery']->deps = ['jquery-core'];
     }
 
+    private function makeTypeLogo($type)
+    {
+        switch ($type){
+            case "pdf":
+                $logo = '<img style="float: left; margin: 10px;" align="left" src="'.plugin_dir_url(dirname(__FILE__, 1)).'assets/img/pdf_icon.png" width="64">';
+                break;
+            case "docx":
+                $logo = '<img style="float: left; margin: 10px;" src="'.plugin_dir_url(dirname(__FILE__, 1)).'assets/img/word_icon.png" width="64">';
+                break;
+            default:
+                $logo = '';
+        }
+        return $logo;
+    }
 
 
 }

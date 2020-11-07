@@ -1,6 +1,6 @@
 {
-  "name": "vendor_name/wp-file-table",
-  "description": "description",
+  "name": "bamboo2panda/wp-file-table",
+  "description": "File tables WordPress plugin.",
   "minimum-stability": "stable",
   "license": "GPL-2.0-or-later",
   "authors": [
@@ -20,8 +20,8 @@
   },
   "autoload": {
     "psr-4": {
-      "Inc\\": "./inc",
-      "Templates\\": "./templates"
+      "FilePostsInc\\": "./inc",
+      "FilePostsTemplates\\": "./templates"
     }
   }
 }

@@ -1,7 +1,7 @@
 <?php
 
 
-namespace Inc\Base;
+namespace FilePostsInc\Base;
 
 
 class BaseController

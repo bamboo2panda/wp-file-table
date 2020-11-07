@@ -9,8 +9,8 @@ Author: bamboo2panda
 Author URI: https://github.com/bamboo2panda/
 License: GPL2
 */
-namespace Inc;
-use Inc\Base;
+namespace FilePostsInc;
+use FilePostsInc\Base;
 
 final class Init
 {

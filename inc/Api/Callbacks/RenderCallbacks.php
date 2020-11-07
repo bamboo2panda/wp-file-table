@@ -1,10 +1,10 @@
 <?php
 
 
-namespace Inc\Api\Callbacks;
+namespace FilePostsInc\Api\Callbacks;
 
 
-use Templates\FileListTemplate;
+use FilePostsTemplates\FileListTemplate;
 
 class RenderCallbacks
 {

@@ -8,10 +8,10 @@ Author: bamboo2panda
 Author URI: https://github.com/bamboo2panda/
 License: GPL2
 */
-namespace Inc\Api\Callbacks;
+namespace FilePostsInc\Api\Callbacks;
 
 
-use Inc\Base\BaseController;
+use FilePostsInc\Base\BaseController;
 
 class FilePostsCallbacks extends BaseController
 {
