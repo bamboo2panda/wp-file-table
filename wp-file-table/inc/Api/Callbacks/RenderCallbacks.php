@@ -24,7 +24,6 @@ class RenderCallbacks
     private function getFileList($category_id)
     {
         $posts = get_posts( array(
-            'numberposts' => 1000,
             'post_type' => 'file_post',
             'tax_query' => array(
                 array (
