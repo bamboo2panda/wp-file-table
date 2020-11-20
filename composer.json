@@ -16,12 +16,14 @@
     "ext-simplexml": "*"
   },
   "require-dev": {
-    "phpmd/phpmd": "~2.9"
+    "phpmd/phpmd": "~2.9",
+    "phpunit/phpunit": "7.*"
   },
   "autoload": {
     "psr-4": {
       "FilePostsInc\\": "./inc",
-      "FilePostsTemplates\\": "./templates"
+      "FilePostsTemplates\\": "./templates",
+      "FilePostsTests\\": "./tests"
     }
   }
 }

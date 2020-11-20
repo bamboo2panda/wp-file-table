@@ -2,3 +2,9 @@
 vendor
 composer.lock
 .DS_Store
+.phpunit*
+phpunit.xml.dist
+.travis.yml
+.phpcs.xml.dist
+bin/
+*.phar
