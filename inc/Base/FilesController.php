@@ -112,9 +112,16 @@ class FilesController
         foreach ($screens as $screen) {
 
             add_meta_box(
-                'file_post_attachment',           // Unique ID
-                'Прикреплённый файл ',  // Box title
+                'file_post_attachments',           // Unique ID
+                'Прикреплённые файлы',  // Box title
                 array($this->filePostsCallbacks, 'attachFile'),  // Content callback, must be of type callable
+                $screen,
+                'side'
+            );
+            add_meta_box(
+                'file_post_thumbnail',           // Unique ID
+                'Превью',  // Box title
+                array($this->filePostsCallbacks, 'addPreview'),  // Content callback, must be of type callable
                 $screen,
                 'side'
             );

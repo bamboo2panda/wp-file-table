@@ -32,20 +32,18 @@ class FileListTemplate
             $name = $file_post->post_title;
             $link = $file_post->attachment_link;
             $type = $this->getMimeType($link);
-            $type_logo = $this->makeTypeLogo($type);
+            $type_logo = strlen($file_post->preview) > 0 ? $this->setImgThumbnail($file_post->preview) : $this->makeTypeLogo($type);
             $cat = $file_post->terms[0];
             $html .= '
                 <tr>
                     <td>'.$type_logo.'</td>
                     <td><p>'.$name.'</p></td>
                     <td>'.$cat.'</td>
-                    <td><p align="center"><a class="btn btn-primary" href="'.$link.'">Скачать</a></td>
+                    <td>'.$this->getLinks($file_post).'</td>
                 </tr>';
         }
-        $html .= '
-                </tbody>
-            </table>
-        ';
+        $html .= '</tbody>
+            </table>';
 
         return $html;
     }
@@ -61,7 +59,7 @@ class FileListTemplate
         $file_name = $this->getFileNameFromFileURL($url);
         $pos = strrpos($file_name, '.');
         return $pos === false ? $file_name : substr($file_name, $pos + 1);
-        return substr($file_name, strrpos($file_name, '.') + 1);
+        //return substr($file_name, strrpos($file_name, '.') + 1);
     }
 
     private function makeTypeLogo($type)
@@ -83,6 +81,61 @@ class FileListTemplate
                 $logo = '<img style="float: left; margin: 10px;" src="'.plugin_dir_url(dirname(__FILE__, 1)).'assets/img/unknown.png" width="64">';
         }
         return $logo;
+    }
+
+    private function getLinks($file_post)
+    {
+        $html = '';
+        if (strlen($file_post->attachment_link) > 0){
+            $html .= $this->getFileLink($file_post->attachment_link, $file_post->attachment_name,$file_post->attachment_style);
+        }
+        if (strlen($file_post->attachment_link_1) > 0){
+            $html .= $this->getFileLink($file_post->attachment_link_1, $file_post->attachment_name_1, $file_post->attachment_style_1);
+        }
+        if (strlen($file_post->attachment_link_2) > 0){
+            $html .= $this->getFileLink($file_post->attachment_link_2, $file_post->attachment_name_2, $file_post->attachment_style_2);
+        }
+        return $html;
+    }
+
+    private function setImgThumbnail($preview)
+    {
+        return '<img style="float: left; margin: 10px;" src="'.$preview.'" width="64">';
+    }
+
+    /**
+     * @param $link
+     * @param $name
+     * @param string $style
+     * @return string
+     */
+    private function getFileLink($link, $name, $style = '')
+    {
+        $html = '<p align="center">';
+        if (strlen($link) > 0) {
+            $name = strlen($name) > 0 ? $name : 'Скачать';
+            if (strlen($style) > 0) {
+                switch ($style) {
+                    case "blue":
+                        $style = 'btn btn-primary';
+                        break;
+                    case "green":
+                        $style = 'btn btn-success';
+                        break;
+                    case "red":
+                        $style = 'btn btn-danger';
+                        break;
+                    case "simple":
+                        $style = '';
+                }
+            } else {
+                $style = 'btn btn-primary';
+            }
+
+            $html .= '<a class="' . $style . '" href="' . $link . '">' . $name . '</a>';
+        }
+        $html .= '</p>';
+        return $html;
     }
 
 

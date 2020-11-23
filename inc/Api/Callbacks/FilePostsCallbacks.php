@@ -35,6 +35,8 @@ class FilePostsCallbacks extends BaseController
             'attachment_link_2' => $_POST['attachment_link_2'],
             'attachment_style_2' => $_POST['attachment_style_2'],
 
+            'preview' => $_POST['preview'],
+
         ];
 
         update_post_meta($post_id, '_file_post_meta_key', $meta);
@@ -132,6 +134,19 @@ class FilePostsCallbacks extends BaseController
         global $post;
         $meta = get_post_meta($post->ID, '_file_post_meta_key', true);
         return is_array($meta) && key_exists($name, $meta) ? $meta[$name] : '';
+    }
+
+    public function addPreview()
+    {
+        $preview = $this->getPostMetaParam('preview');
+        echo '<label for="preview">Изображение файла</label>
+            <input 
+                type="text" 
+                value="'.$preview.'" 
+                name="preview" 
+                id="preview"
+            >';
+        echo '</p>';
     }
 
 }
