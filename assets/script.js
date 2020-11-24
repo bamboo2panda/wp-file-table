@@ -1,23 +1,26 @@
 jQuery(function($) {
-    // $.noConflict(true);
     $(document).ready(function() {
-        $('#file-table').DataTable( {
+
+        let table = $('#file-table').DataTable( {
             "columnDefs": [
                 {
                     "targets": [ 2 ],
                     "visible": false,
                 },
-                { "width": "5%", "targets": 0 },
                 {
-                    // The `data` parameter refers to the data for the cell (defined by the
-                    // `data` option, which defaults to the column being worked with, in
-                    // this case `data: 0`.
+                    "targets": [ 4 ],
+                    "visible": false,
+                },
+                {
+                    "width": "5%", "targets": 0 },
+                {
                     "render": function ( data, type, row ) {
                         return row[0] + ' ' + data;
                     },
                     "targets": 1
                 },
-                { "visible": false,  "targets": [ 0 ] }
+                {
+                    "visible": false,  "targets": [ 0 ] }
             ],
             "drawCallback": function( settings ) {
                 $("#file-table thead").remove(); } ,
@@ -49,5 +52,32 @@ jQuery(function($) {
                 } );
             }
         } );
+
+        function format ( d ) {
+            // `d` is the original data object for the row
+            return '<div>' + d[4] + '</div>';
+        }
+
+        // Add event listener for opening and closing details
+        $('#file-table tbody').on('click', 'a.description-control', function (e) {
+            e.preventDefault()
+            let tr = $(this).closest('tr');
+            let row = table.row( tr );
+
+            if ( row.child.isShown() ) {
+                // This row is already open - close it
+                row.child.hide();
+                tr.removeClass('shown');
+                $(this).html('Показать описание')
+            }
+            else {
+                // Open this row
+                row.child( format(row.data()) ).show();
+                tr.addClass('shown');
+                $(this).html('Скрыть описание')
+            }
+        } );
     } );
+
+
 });

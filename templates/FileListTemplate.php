@@ -13,16 +13,18 @@ class FileListTemplate
         wp_enqueue_script('jquery');
         wp_enqueue_script('data-tables', 'https://cdn.datatables.net/v/dt/dt-1.10.22/b-1.6.5/sb-1.0.0/sp-1.2.1/sl-1.3.1/datatables.min.js');
         wp_enqueue_script('file-table-js', plugin_dir_url(dirname(__FILE__, 1)) . 'assets/script.js');
+        wp_enqueue_style('file-table-css', plugin_dir_url(dirname(__FILE__, 1)) . 'assets/style.css');
 
 
         $html = '
-            <table id="file-table" class="display" style="width: 100%;">
+            <table id="file-table" class="table display" style="width: 100%; overflow: hidden;">
                 <thead>
                     <tr>
                     <th>Лого</th>
                     <th>Название</th>
                     <th>Направление</th>
                     <th>Скачать</th>
+                    <th>Описание</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -34,12 +36,14 @@ class FileListTemplate
             $type = $this->getMimeType($link);
             $type_logo = strlen($file_post->preview) > 0 ? $this->setImgThumbnail($file_post->preview) : $this->makeTypeLogo($type);
             $cat = $file_post->terms[0];
+            $description = wpautop(get_the_content(null,null,$file_post->ID), false);
             $html .= '
                 <tr>
                     <td>'.$type_logo.'</td>
-                    <td><p>'.$name.'</p></td>
+                    <td><p>'.$name.'</p><p>'. (strlen($description) > 0 ? '<a href="#" class="description-control">Показать описание</a>' : '') .'</p></td>
                     <td>'.$cat.'</td>
                     <td>'.$this->getLinks($file_post).'</td>
+                    <td>'.$description.'</td>
                 </tr>';
         }
         $html .= '</tbody>
