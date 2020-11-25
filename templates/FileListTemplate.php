@@ -24,7 +24,6 @@ class FileListTemplate
                     <th>Название</th>
                     <th>Направление</th>
                     <th>Скачать</th>
-                    <th>Описание</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -40,7 +39,7 @@ class FileListTemplate
             $html .= '
                 <tr>
                     <td>'.$type_logo.'</td>
-                    <td><p>'.$name.'</p><p>'. (strlen($description) > 0 ? '<a href="#" class="description-control">Показать описание</a>' : '') .'</p></td>
+                    <td><p><strong>'.$name.'</strong></p><div class="minimize">'. $description .'</div></td>
                     <td>'.$cat.'</td>
                     <td>'.$this->getLinks($file_post).'</td>
                     <td>'.$description.'</td>
@@ -48,7 +47,6 @@ class FileListTemplate
         }
         $html .= '</tbody>
             </table>';
-
         return $html;
     }
 

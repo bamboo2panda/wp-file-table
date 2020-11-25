@@ -53,30 +53,35 @@ jQuery(function($) {
             }
         } );
 
-        function format ( d ) {
-            // `d` is the original data object for the row
-            return '<div>' + d[4] + '</div>';
-        }
+        $(function() {
 
-        // Add event listener for opening and closing details
-        $('#file-table tbody').on('click', 'a.description-control', function (e) {
-            e.preventDefault()
-            let tr = $(this).closest('tr');
-            let row = table.row( tr );
+            let minimized_elements = $('.minimize');
 
-            if ( row.child.isShown() ) {
-                // This row is already open - close it
-                row.child.hide();
-                tr.removeClass('shown');
-                $(this).html('Показать описание')
-            }
-            else {
-                // Open this row
-                row.child( format(row.data()) ).show();
-                tr.addClass('shown');
-                $(this).html('Скрыть описание')
-            }
-        } );
+            minimized_elements.each(function() {
+                let t = $(this).text();
+                let tizer_length = 200;
+                if (t.length < tizer_length) return;
+
+                $(this).html(
+                    t.slice(0, tizer_length) + '<span>... </span><a href="#" class="more">Далее</a>' +
+                    '<span style="display:none;">' + t.slice(tizer_length, t.length) + ' <a href="#" class="less">Свернуть</a></span>'
+                );
+
+            });
+
+            $('a.more', minimized_elements).click(function(event) {
+                event.preventDefault();
+                $(this).hide().prev().hide();
+                $(this).next().show();
+            });
+
+            $('a.less', minimized_elements).click(function(event) {
+                event.preventDefault();
+                $(this).parent().hide().prev().show().prev().show();
+            });
+
+        });
+
     } );
 
 
