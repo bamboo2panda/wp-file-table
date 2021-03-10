@@ -42,7 +42,7 @@ class FileListTemplate
                     <td><p><strong>'.$name.'</strong></p><div class="minimize">'. $description .'</div></td>
                     <td>'.$cat.'</td>
                     <td>'.$this->getLinks($file_post).'</td>
-                    <td>'.$description.'</td>
+                    <td>'.do_shortcode($description).'</td>
                 </tr>';
         }
         $html .= '</tbody>

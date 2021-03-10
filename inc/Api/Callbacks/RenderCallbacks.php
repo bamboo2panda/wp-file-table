@@ -33,6 +33,7 @@ class RenderCallbacks
                     'terms' => $category_id,
                 )
             ),
+            'sort_order' => 'desc',
         ) );
 
         $file_posts = [];

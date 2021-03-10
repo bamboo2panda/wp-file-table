@@ -8,3 +8,4 @@ phpunit.xml.dist
 .phpcs.xml.dist
 bin/
 *.phar
+*.zip
