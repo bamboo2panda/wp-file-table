@@ -58,21 +58,20 @@ jQuery(function($) {
             let minimized_elements = $('.minimize');
 
             minimized_elements.each(function() {
-                let t = $(this).text();
                 let tizer_length = 200;
+                let t = '<div class="tizer">' + $(this).text().slice(0, tizer_length) + '<span>... </span><a href="#" class="more">Далее</a></div>';
+                let h = '<div style="display:none;">' + $(this).html() + ' <a href="#" class="less">Свернуть</a></div>';
+                
                 if (t.length < tizer_length) return;
 
-                $(this).html(
-                    t.slice(0, tizer_length) + '<span>... </span><a href="#" class="more">Далее</a>' +
-                    '<span style="display:none;">' + t.slice(tizer_length, t.length) + ' <a href="#" class="less">Свернуть</a></span>'
-                );
+                $(this).html(t + h);
 
             });
 
             $('a.more', minimized_elements).click(function(event) {
                 event.preventDefault();
-                $(this).hide().prev().hide();
-                $(this).next().show();
+                $(this).parent().hide();
+                $(this).parent().next().show();
             });
 
             $('a.less', minimized_elements).click(function(event) {

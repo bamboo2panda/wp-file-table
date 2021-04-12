@@ -1,8 +1,5 @@
 <?php
-
-
 namespace FilePostsInc\Api\Callbacks;
-
 
 use FilePostsTemplates\FileListTemplate;
 
