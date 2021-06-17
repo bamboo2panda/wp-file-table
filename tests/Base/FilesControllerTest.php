@@ -14,23 +14,4 @@ class FilesControllerTest extends TestCase
         $this->assertTrue(has_action('save_post_file_post'));
     }
 
-//    public function testMakeFilePostType()
-//    {
-//
-//    }
-//
-//    public function testMakeShortcodePostType()
-//    {
-//
-//    }
-//
-//    public function testAddMetaBoxes()
-//    {
-//
-//    }
-//
-//    public function testMakeFileCategoryTaxonomy()
-//    {
-//
-//    }
 }

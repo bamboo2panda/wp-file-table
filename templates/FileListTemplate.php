@@ -80,7 +80,7 @@ class FileListTemplate
                 $logo = '<img style="float: left; margin: 10px;" src="'.plugin_dir_url(dirname(__FILE__, 1)).'assets/img/html.png" width="64">';
                 break;
             default:
-                $logo = '<img style="float: left; margin: 10px;" src="'.plugin_dir_url(dirname(__FILE__, 1)).'assets/img/unknown.png" width="64">';
+                $logo = '<img style="float: left; margin: 10px;" src="'.plugin_dir_url(dirname(__FILE__, 1)).'assets/img/html.png" width="64">';
         }
         return $logo;
     }
