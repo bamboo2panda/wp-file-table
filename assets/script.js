@@ -46,7 +46,12 @@ jQuery(function($) {
                                 .draw();
                         } );
                     column.data().unique().sort().each( function ( d, j ) {
-                        select.append( '<option value="'+d+'">'+d+'</option>' )
+                        const hash = $(location).attr('hash');
+                        let selected = ""
+                        if (hash === d){
+                            selected = "selected"
+                        }
+                        select.append( '<option ' + selected + ' value="'+d+'">'+d+'</option>' )
                     } );
 
                 } );
